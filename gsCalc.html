@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<meta charset="UTF-8">
+		<title>Calculadora para Costos Maritimos - GSIntershop - 2005</title>
+
+		<style type="text/css">
+			/*Reiniciando estilo del navegador - Gaitan - 2015*/
+			html, body { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+			#d-ttl-main { background-color: lightgray; padding: 5px; width: 400px; }
+			#d-ttl-main-lbl { background-color: white; padding: 5px; width: 300px; }
+			#d-ttl-detail-lbl { background-color: white; padding: 5px; width: 150px; margin: 5px;  display: none;}
+
+			.parentSpace { height:214px; background-color:#60BEF7; width:410px; display: table; overflow: hidden; }
+			.parentSpace .childSpace{ display: table-cell; vertical-align: top; width: 410px; margin: 0 auto; text-align: left; }
+			.childSpace .table { display: block;}
+			.table { display:table; }
+			.header { display:table-header-group; font-weight:bold; }
+			.row { display:table-row; }
+			.rowGroup { display:table-row-group; }
+			.cell { display:table-cell; width:200px; background-color: white; border: 1px solid #E0E0E0; padding: 5px; }
+			input[type="text"] { width: 150px; height: 28px; font-size: 14px; font-family: arial; font-weight: bold; padding-left: 5px; color: darkgreen;}
+
+			input[type="button"] {width: 100px; height: 30px; font-size: 14px; font-family: arial; font-weight: bold; padding: 6px; color: #666869; background-color: white; border: 1px solid darkgray; margin-left: 15px;}
+			input[type="button"]:hover {background-color: #DEDEDE; cursor: pointer;}
+
+			input[name="txtvolumen"], input[name="txtCF"], input[name="txtof"], input[name="txtbunker"], input[name="txtsed"], input[name="txtlibrasvol"], input[name="txtentrega"], input[name="txtflete"], input[name="txttraaduana"], input[name="txtitbms"], input[name="txtTotal"]
+			{ margin: 5px; border-radius: 5px; border: 1px solid #ED1A1A;}
+
+			.measure-inch {font-size: 16px; color: red; display: inline; font-family: tahoma; }
+			.measure-es-inch { font-size: 11px; font-family: arial; display: inline; color: #969696;}
+
+			.c-d-ttl-main { background-color: #2B81E3; border: 1px solid #DEDEDE; height: 46px; width: 450px; padding-left: 5px; color: white; display: table-cell; vertical-align: middle; font-family: "verdana"; font-size: 16px; font-weight: normal; }
+
+			.c-d-content {width: 450px; height: auto; background-color: #EDEDED; padding-left: 5px; padding-top: 5px; padding-bottom: 5px; /*height: 300px;*/}
+			
+			.c-d-content-lv2 { background-color: #F2CECE; margin-right: 5px; padding: 3px; border: 1px solid #E6A3A3; }
+
+			.c-d-ttl-main-alt { width: 450px; height: 46px; background-color: #E32B2B; padding-left: 5px; color: white; display: table-cell; vertical-align: middle; font-family: verdana; font-size: 16px; font-weight: normal;}
+
+			.c-d-lbl-lbl {}
+			.lbl-std-ttl { font-size: 16px; font-family: arial; font-weight: bold; position: relative; left: 6px; display: block; }
+			.lbl-std {font-size: 14px; font-family: verdana; font-weight: normal; position:  relative; left: 6px; }
+		</style>
+
+		<script type="text/javascript" src="jscripts/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="gsCalc.js"></script>
+
+	</head>
+	<body>
+		<div id ="d-ttl-main">
+			<div id = "d-ttl-main-lbl"><label>Calculadora para Costos Maritimos</label></div>
+			<div id="d-ttl-detail-lbl"><label>Altura</label></div>
+		</div>
+
+		<!-- Div's Like HTML table  -->
+		<div class="parentSpace">
+		    <div class="childSpace">
+		        <div class="table">
+		          <div class="header">
+		            <div class="cell">Datos</div>
+		            <div class="cell">Informacion</div>
+		          </div> 
+		          <div class="rowGroup">
+		            <div class="row">
+		              <div class="cell">altura <div class="measure-inch">&#8243;</div></div>
+		              <div class="cell"> <input id="txtaltura" type="text" name="txtaltura"> </div>
+		            </div>
+		          </div>
+		          <div class="rowGroup">
+		            <div class="row">
+		              <div class="cell">ancho <div class="measure-es-inch">(plg.)</div> </div>  
+		              <div class="cell"><input id="txtancho" type="text" name="txtancho"></div>  
+		            </div>
+		            
+		          </div>
+		          <div class="rowGroup">
+		            <div class="row">
+		              <div class="cell">profundida <div class="measure-es-inch">(plg.)</div> </div>
+		              <div class="cell"><input id="txtprofundidad" type="text" name="txtprofundidad"></div>
+		            </div>
+		          </div>
+		          <div class="rowGroup">
+		            <div class="row">
+		              <div class="cell">Precio WEB (USD.)</div>
+		              <div class="cell"><input id="txtprecioweb" type="text" name="txtprecioweb"></div>
+		            </div>
+		          </div>
+		        </div>            
+		    </div>
+		</div>
+
+		<br />
+
+		<div>
+			<input type="button" name="btncalc" value="calcular" id="btncalc">
+		</div>
+		<br />
+		<!--
+		<div class="c-d-ttl-main">
+			<label class="lbl-std-ttl">constantes</label><br /><br />
+			<label class="lbl-std" >BL = </label>&nbsp;35.00 $<br />
+			<label class="lbl-std" >Documentaci&oacute;n = </label>&nbsp;50.00 $<br />
+			
+		</div>-->
+
+		<div class="c-d-ttl-main-alt">
+			Constantes
+		</div>
+		<div class="c-d-content">
+			<label class="lbl-std-ttl" id="lblBL">BL =</label>
+			<label class="lbl-std-ttl" id="lblDOC">DOCUMENTACION =</label>
+		</div>
+
+		<br />
+		<div class="c-d-ttl-main">
+			<!--<label class="lbl-std-ttl">resultados y calculos</label>-->
+			Resultados
+		</div>
+		<div class="c-d-content">
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Volumen</label>
+				<input type="text" name="txtvolumen" id="txtvolumen">
+			</div>
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Pies Cubicos</label>
+				<input id="txtCF" type="text" name="txtCF">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Ocean Freight</label>
+				<input id="txtof" type="text" name="txtof">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Bunker</label>
+				<input id ="txtbunker" type="text" name="txtbunker">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">SED</label>
+				<input type="text" name="txtsed">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Libras Volumetricas</label>
+				<input type="text" name="txtlibrasvol">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Entrega</label>
+				<input type="text" name="txtentrega">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Flete</label>
+				<input type="text" name="txtflete">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Tramite Aduana</label>
+				<input type="text" name="txttraaduana">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">ITBMS</label>
+				<input type="text" name="txtitbms">
+			</div>
+
+			<div class="c-d-content-lv2">
+				<label class="lbl-std-ttl">Total</label>
+				<input type="text" name="txtTotal">
+			</div>
+		</div>
+		<br /><br />
+		<!--<div>
+			<label class="lbl-std" >Volumen = </label>&nbsp;<input type="text" name="txtvolumen"><br /><br />
+			<label class="lbl-std" >Pies Cubicos = </label>&nbsp;<input type="text" name="txtCF"><br /><br />
+			<label class="lbl-std" >Ocean Freight = </label>&nbsp;<input type="text" name="txtof"><br /><br />
+			<label class="lbl-std" >Bunker = </label>&nbsp;<input type="text" name="txtbunker"><br /><br />
+			<label class="lbl-std" >SED = </label>&nbsp;<input type="text" name="txtsed"><br /><br />
+			<label class="lbl-std" >Libras Volumetricas = </label>&nbsp;<input type="text" name="txtlibrasvol"><br /><br />
+			<label class="lbl-std" >Entrega = </label>&nbsp;<input type="text" name="txtentrega"><br /><br />
+			<label class="lbl-std" >Flete = </label>&nbsp;<input type="text" name="txtflete"><br /><br />
+			<label class="lbl-std" >tramite aduana = </label>&nbsp;<input type="text" name="txttrataduana"><br /><br />
+			<label class="lbl-std" >ITBMS = </label>&nbsp;<input type="text" name="txtitbms"><br /><br /><br />
+
+			<label class="lbl-std" >TOTAL = </label>&nbsp;<input type="text" name="txtitbms"><br /><br />
+		</div> -->
+
+	</body>
+</HTML>
